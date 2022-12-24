@@ -49,21 +49,8 @@ function filterTasks() {
     } else {
         number_completed_tasks.innerHTML = list_completed_tasks.length;
     }
-    // saveCompleted();
     colorCompleted();
 }
-
-// function saveCompleted() {
-//     let checks = document.querySelectorAll('.casillas');
-//     let number_checks = 0;
-//     checks.forEach(function(x) {
-//         if (x.checked == true) {
-//             number_checks++;
-//         }
-//     })
-//     number_completed_tasks.innerHTML = number_checks;
-//     colorCompleted();
-// }
 
 function colorCompleted() {
     tasks.forEach(function(x) {
