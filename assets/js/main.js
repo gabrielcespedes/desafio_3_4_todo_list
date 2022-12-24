@@ -49,19 +49,21 @@ function filterTasks() {
     } else {
         number_completed_tasks.innerHTML = list_completed_tasks.length;
     }
-}
-
-function saveCompleted() {
-    let checks = document.querySelectorAll('.casillas');
-    let number_checks = 0;
-    checks.forEach(function(x) {
-        if (x.checked == true) {
-            number_checks++;
-        }
-    })
-    number_completed_tasks.innerHTML = number_checks;
+    // saveCompleted();
     colorCompleted();
 }
+
+// function saveCompleted() {
+//     let checks = document.querySelectorAll('.casillas');
+//     let number_checks = 0;
+//     checks.forEach(function(x) {
+//         if (x.checked == true) {
+//             number_checks++;
+//         }
+//     })
+//     number_completed_tasks.innerHTML = number_checks;
+//     colorCompleted();
+// }
 
 function colorCompleted() {
     tasks.forEach(function(x) {
@@ -71,10 +73,12 @@ function colorCompleted() {
             x.completed = true;
         } else if (x.completed == true) {
             document.getElementById('row_'+x.id).style.backgroundColor = "lime";
+            casilla.checked == true;
         } else {
             document.getElementById('row_'+x.id).style.backgroundColor = "lightgray"; 
         }
     })
+    number_completed_tasks.innerHTML = tasks.filter(x=>x.completed == true).length;
 }
 
 function deleteTask(id) {
