@@ -24,19 +24,21 @@
             <button id="add_task" class="text-white ms-1" onclick="addTask()">Agregar</button>
         </div>
         <div class="row mt-3">
-            <div class="col col-4">
+            <div class="col col-2">
                 <ul class="ps-0">
                     <li>Total: <strong id="total_tasks">0</strong></li>
                     <li>Realizadas: <strong id="number_completed_tasks">0</strong></li>
                 </ul>
             </div>
-            <div class="col col-8">
+            <div class="col col-10">                
                 <table id="table_tasks">
                     <tr>
                         <th class="ps-0">ID</th>
-                        <th class="ps-3">Tarea</th>
+                        <th class="ps-1 pe-3">Tarea</th>
+                        <th>Listo</th>
+                        <th class="ps-1">Falta</th>
                     </tr>                    
-                </table>
+                </table>                               
             </div>
         </div>
         <div class="button_container">
@@ -50,3 +52,4 @@
     
 </body>
 </html>
+

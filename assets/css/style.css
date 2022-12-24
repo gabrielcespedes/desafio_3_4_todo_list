@@ -1,11 +1,13 @@
 .container {
     background-color:lightgray;
-    width: 75%;
+    width: 95%;
 }
 
 .subcontainer {
     display: flex;
 }
+
+
 
 input {
     width: 95%;

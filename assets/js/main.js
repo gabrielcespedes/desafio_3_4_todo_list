@@ -24,12 +24,12 @@ function renderTasks() {
     let text = `<tr>
             <th class="ps-0">ID</th>
             <th class="ps-3">Tarea</th>
-            <th><i class="fa-solid fa-check"></i></th>
-            <th><i class="fa-solid fa-file-circle-exclamation"></i></th>
+            <th>Listo</th>
+            <th class="ps-1">Falta</th>
             </tr>`;
     tasks.forEach(function(x) {text += `
     <tr id="row_${x.id}"><td class="ps-0">${x.id}</td>
-    <td class="ps-3 pe-5">${x.description}</td>
+    <td id="description_cell" class="ps-1 pe-3">${x.description}</td>
     <td><input id="checkbox_${x.id}" type="checkbox" class="casillas"></td>
     <td><input id="checkbox2_${x.id}" type="checkbox" class="casillas_2"></td>
     <td id="symbol_${x.id}" class="ps-1"><button onclick="deleteTask(${x.id})">❌</button></td>
