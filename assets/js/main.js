@@ -1,13 +1,8 @@
 const tasks = [];
-
 let id_task = 0;
-
 let input_task = document.getElementById('input_task');
-
 let table_tasks = document.getElementById('table_tasks');
-
 let total_tasks = document.getElementById('total_tasks');
-
 let number_completed_tasks = document.getElementById('number_completed_tasks');
 
 function addTask() {
@@ -25,18 +20,16 @@ function addTask() {
     }        
 }
 
-
-
 function renderTasks() {
     let text = `<tr>
             <th class="ps-0">ID</th>
             <th class="ps-3">Tarea</th>
             </tr>`;
     tasks.forEach(function(x) {text += `
-    <tr><td class="ps-0">${x.id}</td>
+    <tr id="row_${x.id}"><td class="ps-0">${x.id}</td>
     <td class="ps-3 pe-5">${x.description}</td>
-    <td><input id="checkbox_${x.id}" type="checkbox"></td>
-    <td id="symbol_${x.id}" class="ps-1">❌</td>
+    <td><input id="checkbox_${x.id}" type="checkbox" class="casillas"></td>
+    <td id="symbol_${x.id}" class="ps-1"><button onclick="deleteTask(${x.id})">❌</button></td>
     </tr>
     `})
     table_tasks.innerHTML = text;
@@ -58,5 +51,37 @@ function filterTasks() {
     }
 }
 
+function saveCompleted() {
+    let checks = document.querySelectorAll('.casillas');
+    let number_checks = 0;
+    checks.forEach(function(x) {
+        if (x.checked == true) {
+            number_checks++;
+        }
+    })
+    number_completed_tasks.innerHTML = number_checks;
+    colorCompleted();
+}
+
+function colorCompleted() {
+    tasks.forEach(function(x) {
+        let casilla = document.getElementById('checkbox_'+x.id);
+        if (casilla.checked == true) {
+            document.getElementById('row_'+x.id).style.backgroundColor = "lime";
+            x.completed = true;
+        } else if (x.completed == true) {
+            document.getElementById('row_'+x.id).style.backgroundColor = "lime";
+        } else {
+            document.getElementById('row_'+x.id).style.backgroundColor = "lightgray"; 
+        }
+    })
+}
+
+function deleteTask(id) {
+    const index = tasks.findIndex((x) => x.id == id)
+    tasks.splice(index, 1);
+    renderTasks();
+    colorCompleted();    
+}
 
 

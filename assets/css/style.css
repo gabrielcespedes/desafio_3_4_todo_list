@@ -12,12 +12,11 @@ input {
     height: 40px;
 }
 
-button {
+.subcontainer button, .button_container button {
     background-color:green;
     border: none;
     height: 40px;
     border-radius: 6%;
-
 }
 
 ul {
@@ -26,4 +25,9 @@ ul {
 
 td input {
     line-height: 10px;
+}
+
+.button_container {
+    display: flex;
+    justify-content: end;
 }
