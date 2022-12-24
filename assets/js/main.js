@@ -24,11 +24,14 @@ function renderTasks() {
     let text = `<tr>
             <th class="ps-0">ID</th>
             <th class="ps-3">Tarea</th>
+            <th><i class="fa-solid fa-check"></i></th>
+            <th><i class="fa-solid fa-file-circle-exclamation"></i></th>
             </tr>`;
     tasks.forEach(function(x) {text += `
     <tr id="row_${x.id}"><td class="ps-0">${x.id}</td>
     <td class="ps-3 pe-5">${x.description}</td>
     <td><input id="checkbox_${x.id}" type="checkbox" class="casillas"></td>
+    <td><input id="checkbox2_${x.id}" type="checkbox" class="casillas_2"></td>
     <td id="symbol_${x.id}" class="ps-1"><button onclick="deleteTask(${x.id})">❌</button></td>
     </tr>
     `})
@@ -55,13 +58,23 @@ function filterTasks() {
 function colorCompleted() {
     tasks.forEach(function(x) {
         let casilla = document.getElementById('checkbox_'+x.id);
+        let casilla_2 = document.getElementById('checkbox2_' + x.id);
         if (casilla.checked == true) {
             document.getElementById('row_'+x.id).style.backgroundColor = "lime";
             x.completed = true;
-        } else if (x.completed == true) {
+        }   else if (x.completed == true && casilla_2.checked == true) {
+            document.getElementById('row_'+x.id).style.backgroundColor = "lightgray";
+            x.completed = false;
+        }   else if (x.completed == true) {
             document.getElementById('row_'+x.id).style.backgroundColor = "lime";
-            casilla.checked == true;
-        } else {
+            casilla.checked = true;
+        }   else if (casilla_2.checked == true) {
+            document.getElementById('row_'+x.id).style.backgroundColor = "lightgray";
+            x.completed = false;
+        }   else if (x.completed == false) {
+            document.getElementById('row_'+x.id).style.backgroundColor = "lightgray";
+            casilla.checked = false;
+        }   else {
             document.getElementById('row_'+x.id).style.backgroundColor = "lightgray"; 
         }
     })
